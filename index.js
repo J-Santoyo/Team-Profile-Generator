@@ -39,4 +39,28 @@ function createManager() {
             validate: officeNum => /^[0-9]+$/.test(officeNum)
         },
     ])
+
+    .then(addNewEmployees => {
+        const { managerName, managerID, managerEmail, officeNum } = addNewEmployees;
+        const mgmt = new Manager(managerName, managerID, managerEmail, officeNum)
+        newTeam.push(mgmt)
+
+        console.log(mgmt);
+
+    })
+};
+// createManager();
+createManager()
+.then(createEmployee)
+
+
+console.log("newTeam");
+
+//  adding new employees to team
+function createEmployee() {
+    return inquirer.prompt([
+        {
+            type
+        }
+    ])
 }
