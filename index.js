@@ -108,5 +108,19 @@ function createEmployee() {
     .then(addNewEmployees => {
         var { employeeName, employeeID, GitHub, education, employeeEmail } = addNewEmployees;
         var employee;
+        if (role === "Engineer") {
+            var employee = new Engineer(employeeName, employeeID, GitHub, employeeEmail)
+            newTeam.push(employee)
+
+        } else if (role === "Intern") {
+            var employee = new Intern(employeeName, employeeID, GitHub, employeeEmail)
+            newTeam.push(employee)
+        } if (yesAdd) {
+            return createEmployee(newTeam);
+        } else {
+            return newTeam;
+        }
     })
-}
+    console.log(employee);
+};
+addNewEmployees();
