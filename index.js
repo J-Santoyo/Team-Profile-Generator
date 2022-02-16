@@ -60,7 +60,53 @@ console.log("newTeam");
 function createEmployee() {
     return inquirer.prompt([
         {
-            type
-        }
+            type: "list",
+            name: 'employeeRole',
+            message: "Please select a role",
+            choices: ["Intern", "Engineer"]
+        },
+        {
+            type: "input",
+            name: 'employeeName',
+            message: "What is the employee's name?",
+            validate: employeeName => /[a-z1-9]/.test(employeeName)
+
+        },
+        {
+            type: "input",
+            name: "employeeID",
+            message: "What is the employee's ID?",
+            validate: employeeID => /^[0-9]+$/.test(employeeID)
+        },
+        {
+            type: "input",
+            name: "Github",
+            message: "What is this employee's GitHub username?",
+            when: (input) => input.employeeRole === "Engineer",
+            validate: GitHub => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(GitHub)
+        },
+        {
+            type: "input",
+            name: "education",
+            message: "What school is this intern attending?",
+            when: (input) => input.employeeRole === "Intern",
+            validate: education => /[a-z1-9]/.test(education)
+        },
+        {
+            type: "input",
+            name: "employeeEmail",
+            message: "What is the employee's email?",
+            validate: employeeEmail => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(employeeEmail)
+        },
+        {
+            type: "confirm",
+            name: "yesAdd",
+            message: "Would you like to add a new employee?",
+            default: true,
+        },
     ])
+    .then(addNewEmployees => {
+        var { employeeName, employeeID, GitHub, education, employeeEmail } = addNewEmployees;
+        var employee;
+    })
 }
