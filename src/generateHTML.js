@@ -87,5 +87,21 @@ generateHTML = data => {
             // Pushing data to create cards
             pageArray.push(engineerCard)
         }
+
+        // calling intern function to created card
+        if (role === 'Intern') {
+            const internCard = generateIntern(employee)
+            // Pushing data to create cards
+            pageArray.push(internCard)
+        }
     }
+
+    // combined string to create employee cards
+    const employeeCards = pageArray.join('')
+
+    // Created team variable to generate team page with employee card data
+    const generateTeam = generateTeamPage(employeeCards)
+    return generateTeam
 }
+
+// Generating My Team Page
