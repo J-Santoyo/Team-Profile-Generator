@@ -57,9 +57,35 @@ const generateIntern = function (intern) {
         <div class="card-body">
         <ul class="list-group list-group-flush">
         <li class="list-group-item">ID: ${intern.id}</li>
-        <li class="list-group-item"></li>
+        <li class="list-group-item">Email: <a href="mailto:${intern.email}">${intern.email}</a></li>
+        <li class="list-group-item">School: ${intern.school}</li>
         </ul>
         </div>
     </div>
     `
+}
+
+// Pushed data from index to create HTML page
+generateHTML = data => {
+    // created empty array for storing info to page
+    pageArray = []
+
+    for (let i = 0; i < data.length; i++) {
+        const employee = data[i]
+        const role = employee.getRole()
+
+        // calling manager function to create card
+        if (role === 'Manager') {
+            const managerCard = generateManager(employee)
+            // Pushing data to create cards
+            pageArray.push(managerCard)
+        }
+
+        // Calling engineer function to create card
+        if (rold === 'Engineer') {
+            const engineerCard = generateEngineer(employee)
+            // Pushing data to create cards
+            pageArray.push(engineerCard)
+        }
+    }
 }
