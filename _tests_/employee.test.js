@@ -54,7 +54,7 @@ const { expect } = require("@jest/globals");
 const { test } = require("picomatch");
 const Employee = require("../lib/Employee");
 
-test("Can creat an employee object", () => {
+test("Can create an employee object", () => {
     const empl = new Employee('name', 1, 'email');
 
     expect(empl.name).toBe(expect.any(String));
